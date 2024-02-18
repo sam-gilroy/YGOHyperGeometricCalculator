@@ -1,21 +1,37 @@
 <form [formGroup]="fg" (submit)="onSubmit($event)">
-  <div id="deck">
-    <table id="decklist">
-      <tr>
-        <td>
-          <input id = "card1" type="text" formControlName="card1">
-        </td>
-        <td>
-          <input id="card1quantity" type="number" formControlName="card1quantity">
-        </td>
-        <td>
-          <select id = "card1type" formControlName="card1type">
-            <option *ngFor="let cardtype of cardtypes" value={{cardtype}}>{{cardtype}}</option>
-          </select>
-        </td>
-      </tr>
-    </table>
+  <div formArrayName="deck" class = "form-group" *ngFor="let card of deck.controls; let ind = index;">
+
+    <div [formGroupName]="ind">
+      <label>Card Name:
+        <input type="text" formControlName="cardname">
+      </label>
+      <label>Quantity:
+         <input type="number" formControlName="cardquantity">
+      </label>
+      <label>Starter?:
+        <input type="checkbox" formControlName="starter">
+      </label>
+      <label>Extender?:
+        <input type="checkbox" formControlName="extender">
+      </label>
+      <label>Hand Trap?:
+        <input type="checkbox" formControlName="handtrap">
+      </label>
+      <label>Engine Requirement?:
+        <input type="checkbox" formControlName="enginereq">
+      </label>
+      <label>Board Breaker?:
+        <input type="checkbox" formControlName="boardbreaker">
+      </label>
+      <label>Engine or Non-Engine:
+        <select formControlName="engine_or_nonengine">
+          <option *ngFor="let opt of engine" value={{opt}}>{{opt}}</option>
+        </select>
+      </label>
+    </div>
   </div>
+  <button id="newRow" (click) = "AddNewRow()">Add Another Card</button>
+  <input type="submit">
 </form>
 
 
