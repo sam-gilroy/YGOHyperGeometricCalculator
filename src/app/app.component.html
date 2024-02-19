@@ -33,6 +33,17 @@
   <button id="newRow" (click) = "AddNewRow()">Add Another Card</button>
   <input type="submit">
 </form>
-
+<label>
+  Results:
+  <table>
+    <tr>
+      <th>Exact # of Starters in Opening</th>
+      <th>%Chance of Occurrence</th>
+    </tr>
+    <tr *ngFor="let results of starterResults">
+      <td *ngFor="let field of results">{{field}}</td>
+    </tr>
+  </table>
+</label>
 
 <router-outlet />
