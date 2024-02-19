@@ -26,6 +26,13 @@ export class AppComponent implements OnInit{
   nonengine_count: number;
   engine_count: number;
   starterResults: number[][];
+  starterResults2: number[][];
+  extenderResults: number[][];
+  extenderResults2: number[][];
+  handtrapResults: number[][];
+  handtrapResults2: number[][];
+  enginereqResults: number[][];
+  enginereqResults2: number[][];
 
   constructor(
     private formBuilder: FormBuilder
@@ -42,6 +49,14 @@ export class AppComponent implements OnInit{
     this.nonengine_count = 0;
     this.engine_count = 0;
     this.starterResults = [];
+    this.starterResults2 = [];
+    this.extenderResults = [];
+    this.extenderResults2 = [];
+    this.handtrapResults = [];
+    this.handtrapResults2 = [];
+    this.enginereqResults = [];
+    this.enginereqResults2 = [];
+
 
     const decklist = [];
     decklist.push(this.formBuilder.group({
@@ -52,7 +67,7 @@ export class AppComponent implements OnInit{
       handtrap:false,
       enginereq:false,
       boardbreaker:false,
-      engine:"Engine"
+      engine:''
     }))
     this.deck = this.formBuilder.array(decklist);
 
@@ -68,13 +83,10 @@ export class AppComponent implements OnInit{
   onSubmit(e: Event) {
     this.clearResults();
     this.prepForAnalysis();
-    console.log(this.PerformHGD(1, this.starter_count, 5, this.actualdecklist.length));
-    this.starterResults.push([1,Number(this.PerformHGD(1, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([2,Number(this.PerformHGD(2, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([3,Number(this.PerformHGD(3, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([4,Number(this.PerformHGD(4, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([5,Number(this.PerformHGD(5, this.starter_count, 5, this.actualdecklist.length))]);
-    console.log();
+    this.AnalyzeStarters();
+    this.AnalyzeExtenders();
+    this.AnalyzeHandtraps();
+    this.AnalyzeEngineReq()
   }
 
   AddNewRow() {
@@ -153,6 +165,70 @@ export class AppComponent implements OnInit{
     this.nonengine_count = 0;
     this.engine_count = 0;
     this.starterResults = [];
+    this.starterResults2 = [];
+    this.extenderResults = [];
+    this.extenderResults2 = [];
+    this.handtrapResults = [];
+    this.handtrapResults2 = [];
+    this.enginereqResults = [];
+    this.enginereqResults2 = [];
+  }
+
+  AnalyzeStarters(){
+    this.starterResults.push([1,Number(this.PerformHGD(1, this.starter_count, 5, this.actualdecklist.length))]);
+    this.starterResults.push([2,Number(this.PerformHGD(2, this.starter_count, 5, this.actualdecklist.length))]);
+    this.starterResults.push([3,Number(this.PerformHGD(3, this.starter_count, 5, this.actualdecklist.length))]);
+    this.starterResults.push([4,Number(this.PerformHGD(4, this.starter_count, 5, this.actualdecklist.length))]);
+    this.starterResults.push([5,Number(this.PerformHGD(5, this.starter_count, 5, this.actualdecklist.length))]);
+
+    this.starterResults2.push([1,Number(this.PerformHGD(1, this.starter_count, 6, this.actualdecklist.length))]);
+    this.starterResults2.push([2,Number(this.PerformHGD(2, this.starter_count, 6, this.actualdecklist.length))]);
+    this.starterResults2.push([3,Number(this.PerformHGD(3, this.starter_count, 6, this.actualdecklist.length))]);
+    this.starterResults2.push([4,Number(this.PerformHGD(4, this.starter_count, 6, this.actualdecklist.length))]);
+    this.starterResults2.push([5,Number(this.PerformHGD(5, this.starter_count, 6, this.actualdecklist.length))]);
+    this.starterResults2.push([6,Number(this.PerformHGD(6, this.starter_count, 6, this.actualdecklist.length))]);
+  }
+  AnalyzeExtenders(){
+    this.extenderResults.push([1,Number(this.PerformHGD(1, this.extender_count, 5, this.actualdecklist.length))]);
+    this.extenderResults.push([2,Number(this.PerformHGD(2, this.extender_count, 5, this.actualdecklist.length))]);
+    this.extenderResults.push([3,Number(this.PerformHGD(3, this.extender_count, 5, this.actualdecklist.length))]);
+    this.extenderResults.push([4,Number(this.PerformHGD(4, this.extender_count, 5, this.actualdecklist.length))]);
+    this.extenderResults.push([5,Number(this.PerformHGD(5, this.extender_count, 5, this.actualdecklist.length))]);
+
+    this.extenderResults2.push([1,Number(this.PerformHGD(1, this.extender_count, 6, this.actualdecklist.length))]);
+    this.extenderResults2.push([2,Number(this.PerformHGD(2, this.extender_count, 6, this.actualdecklist.length))]);
+    this.extenderResults2.push([3,Number(this.PerformHGD(3, this.extender_count, 6, this.actualdecklist.length))]);
+    this.extenderResults2.push([4,Number(this.PerformHGD(4, this.extender_count, 6, this.actualdecklist.length))]);
+    this.extenderResults2.push([5,Number(this.PerformHGD(5, this.extender_count, 6, this.actualdecklist.length))]);
+    this.extenderResults2.push([6,Number(this.PerformHGD(6, this.extender_count, 6, this.actualdecklist.length))]);
+  }
+  AnalyzeHandtraps(){
+    this.handtrapResults.push([1,Number(this.PerformHGD(1, this.handtrap_count, 5, this.actualdecklist.length))]);
+    this.handtrapResults.push([2,Number(this.PerformHGD(2, this.handtrap_count, 5, this.actualdecklist.length))]);
+    this.handtrapResults.push([3,Number(this.PerformHGD(3, this.handtrap_count, 5, this.actualdecklist.length))]);
+    this.handtrapResults.push([4,Number(this.PerformHGD(4, this.handtrap_count, 5, this.actualdecklist.length))]);
+    this.handtrapResults.push([5,Number(this.PerformHGD(5, this.handtrap_count, 5, this.actualdecklist.length))]);
+
+    this.handtrapResults2.push([1,Number(this.PerformHGD(1, this.handtrap_count, 6, this.actualdecklist.length))]);
+    this.handtrapResults2.push([2,Number(this.PerformHGD(2, this.handtrap_count, 6, this.actualdecklist.length))]);
+    this.handtrapResults2.push([3,Number(this.PerformHGD(3, this.handtrap_count, 6, this.actualdecklist.length))]);
+    this.handtrapResults2.push([4,Number(this.PerformHGD(4, this.handtrap_count, 6, this.actualdecklist.length))]);
+    this.handtrapResults2.push([5,Number(this.PerformHGD(5, this.handtrap_count, 6, this.actualdecklist.length))]);
+    this.handtrapResults2.push([6,Number(this.PerformHGD(6, this.handtrap_count, 6, this.actualdecklist.length))]);
+  }
+  AnalyzeEngineReq(){
+    this.enginereqResults.push([1,Number(this.PerformHGD(1, this.engine_req_count, 5, this.actualdecklist.length))]);
+    this.enginereqResults.push([2,Number(this.PerformHGD(2, this.engine_req_count, 5, this.actualdecklist.length))]);
+    this.enginereqResults.push([3,Number(this.PerformHGD(3, this.engine_req_count, 5, this.actualdecklist.length))]);
+    this.enginereqResults.push([4,Number(this.PerformHGD(4, this.engine_req_count, 5, this.actualdecklist.length))]);
+    this.enginereqResults.push([5,Number(this.PerformHGD(5, this.engine_req_count, 5, this.actualdecklist.length))]);
+
+    this.enginereqResults2.push([1,Number(this.PerformHGD(1, this.engine_req_count, 6, this.actualdecklist.length))]);
+    this.enginereqResults2.push([2,Number(this.PerformHGD(2, this.engine_req_count, 6, this.actualdecklist.length))]);
+    this.enginereqResults2.push([3,Number(this.PerformHGD(3, this.engine_req_count, 6, this.actualdecklist.length))]);
+    this.enginereqResults2.push([4,Number(this.PerformHGD(4, this.engine_req_count, 6, this.actualdecklist.length))]);
+    this.enginereqResults2.push([5,Number(this.PerformHGD(5, this.engine_req_count, 6, this.actualdecklist.length))]);
+    this.enginereqResults2.push([6,Number(this.PerformHGD(6, this.engine_req_count, 6, this.actualdecklist.length))]);
   }
 }
 

@@ -35,15 +35,106 @@
 </form>
 <label>
   Results:
-  <table>
-    <tr>
-      <th>Exact # of Starters in Opening</th>
-      <th>%Chance of Occurrence</th>
-    </tr>
-    <tr *ngFor="let results of starterResults">
-      <td *ngFor="let field of results">{{field}}</td>
-    </tr>
-  </table>
+  <br />
+  <label>
+    Starters Going First:
+    <table>
+      <tr>
+        <th>Exact # of Starters in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of starterResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Starters Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Starters in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of starterResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+
+  <label>
+    Extenders Going First:
+    <table>
+      <tr>
+        <th>Exact # of Extenders in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of extenderResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Extenders Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Extenders in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of extenderResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+
+  <label>
+    Handtraps Going First:
+    <table>
+      <tr>
+        <th>Exact # of Handtraps in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of handtrapResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Handtraps Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Handtraps in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of handtrapResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+
+  <label>
+    Engine Requirements Going First:
+    <table>
+      <tr>
+        <th>Exact # of Engine Requirements in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of enginereqResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Engine Requirements Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Engine Requirements in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of enginereqResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
 </label>
 
 <router-outlet />
