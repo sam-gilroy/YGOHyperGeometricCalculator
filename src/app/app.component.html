@@ -1,38 +1,40 @@
 <form [formGroup]="fg" (submit)="onSubmit($event)">
   <div formArrayName="deck" class = "form-group" *ngFor="let card of deck.controls; let ind = index;">
 
-    <div [formGroupName]="ind">
-      <label>Card Name:
+    <div [formGroupName]="ind" class="entryRecord">
+      <label class="cardentry">Card Name:
         <input type="text" formControlName="cardname">
       </label>
-      <label>Quantity:
+      <label class="cardentry">Quantity:
          <input type="number" formControlName="cardquantity">
       </label>
-      <label>Starter?:
+      <label class="cardentry">Starter?:
         <input type="checkbox" formControlName="starter">
       </label>
-      <label>Extender?:
+      <label class="cardentry">Extender?:
         <input type="checkbox" formControlName="extender">
       </label>
-      <label>Hand Trap?:
+      <label class="cardentry">Hand Trap?:
         <input type="checkbox" formControlName="handtrap">
       </label>
-      <label>Engine Requirement?:
+      <label class="cardentry">Engine Requirement?:
         <input type="checkbox" formControlName="enginereq">
       </label>
-      <label>Board Breaker?:
+      <label class="cardentry">Board Breaker?:
         <input type="checkbox" formControlName="boardbreaker">
       </label>
-      <label>Engine or Non-Engine:
+      <label class="cardentry">Engine or Non-Engine:
         <select formControlName="engine_or_nonengine">
           <option *ngFor="let opt of engine" value={{opt}}>{{opt}}</option>
         </select>
       </label>
     </div>
   </div>
+  <br />
   <button id="newRow" (click) = "AddNewRow()">Add Another Card</button>
   <input type="submit">
 </form>
+<br />
 <label>
   Results:
   <br />
@@ -61,6 +63,8 @@
     </table>
   </label>
 
+  <br />
+
   <label>
     Extenders Going First:
     <table>
@@ -86,6 +90,8 @@
     </table>
   </label>
 
+  <br />
+
   <label>
     Handtraps Going First:
     <table>
@@ -110,6 +116,8 @@
       </tr>
     </table>
   </label>
+
+  <br />
 
   <label>
     Engine Requirements Going First:

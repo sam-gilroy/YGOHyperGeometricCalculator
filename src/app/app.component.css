@@ -1,0 +1,19 @@
+th, td {
+  text-align: center;
+  outline: black solid thin;
+  padding: 2px 4px;
+}
+
+.cardentry {
+  border: black solid thin;
+  padding: 5px;
+}
+
+.entryRecord {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+table {
+  display: inline;
+}
