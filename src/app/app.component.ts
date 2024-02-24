@@ -33,6 +33,11 @@ export class AppComponent implements OnInit{
   handtrapResults2: number[][];
   enginereqResults: number[][];
   enginereqResults2: number[][];
+  boardbreakerResults: number[][];
+  boardbreakerResults2: number[][];
+  engineResults: number[][];
+  engineResults2: number[][];
+
 
   constructor(
     private formBuilder: FormBuilder
@@ -56,6 +61,10 @@ export class AppComponent implements OnInit{
     this.handtrapResults2 = [];
     this.enginereqResults = [];
     this.enginereqResults2 = [];
+    this.boardbreakerResults = [];
+    this.boardbreakerResults2 = [];
+    this.engineResults = [];
+    this.engineResults2 = [];
 
 
     const decklist = [];
@@ -86,7 +95,9 @@ export class AppComponent implements OnInit{
     this.AnalyzeStarters();
     this.AnalyzeExtenders();
     this.AnalyzeHandtraps();
-    this.AnalyzeEngineReq()
+    this.AnalyzeEngineReq();
+    this.AnalyzeBoardBreakers();
+    this.AnalyzeEngine();
   }
 
   AddNewRow() {
@@ -172,6 +183,10 @@ export class AppComponent implements OnInit{
     this.handtrapResults2 = [];
     this.enginereqResults = [];
     this.enginereqResults2 = [];
+    this.boardbreakerResults = [];
+    this.boardbreakerResults2 = [];
+    this.engineResults = [];
+    this.engineResults2 = [];
   }
 
   AnalyzeStarters(){
@@ -229,6 +244,34 @@ export class AppComponent implements OnInit{
     this.enginereqResults2.push([4,Number(this.PerformHGD(4, this.engine_req_count, 6, this.actualdecklist.length))]);
     this.enginereqResults2.push([5,Number(this.PerformHGD(5, this.engine_req_count, 6, this.actualdecklist.length))]);
     this.enginereqResults2.push([6,Number(this.PerformHGD(6, this.engine_req_count, 6, this.actualdecklist.length))]);
+  }
+  AnalyzeBoardBreakers(){
+    this.boardbreakerResults.push([1,Number(this.PerformHGD(1, this.board_breaker_count, 5, this.actualdecklist.length))]);
+    this.boardbreakerResults.push([2,Number(this.PerformHGD(2, this.board_breaker_count, 5, this.actualdecklist.length))]);
+    this.boardbreakerResults.push([3,Number(this.PerformHGD(3, this.board_breaker_count, 5, this.actualdecklist.length))]);
+    this.boardbreakerResults.push([4,Number(this.PerformHGD(4, this.board_breaker_count, 5, this.actualdecklist.length))]);
+    this.boardbreakerResults.push([5,Number(this.PerformHGD(5, this.board_breaker_count, 5, this.actualdecklist.length))]);
+
+    this.boardbreakerResults2.push([1,Number(this.PerformHGD(1, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    this.boardbreakerResults2.push([2,Number(this.PerformHGD(2, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    this.boardbreakerResults2.push([3,Number(this.PerformHGD(3, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    this.boardbreakerResults2.push([4,Number(this.PerformHGD(4, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    this.boardbreakerResults2.push([5,Number(this.PerformHGD(5, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    this.boardbreakerResults2.push([6,Number(this.PerformHGD(6, this.board_breaker_count, 6, this.actualdecklist.length))]);
+  }
+  AnalyzeEngine(){
+    this.engineResults.push([1,Number(this.PerformHGD(1, this.engine_count, 5, this.actualdecklist.length))]);
+    this.engineResults.push([2,Number(this.PerformHGD(2, this.engine_count, 5, this.actualdecklist.length))]);
+    this.engineResults.push([3,Number(this.PerformHGD(3, this.engine_count, 5, this.actualdecklist.length))]);
+    this.engineResults.push([4,Number(this.PerformHGD(4, this.engine_count, 5, this.actualdecklist.length))]);
+    this.engineResults.push([5,Number(this.PerformHGD(5, this.engine_count, 5, this.actualdecklist.length))]);
+
+    this.engineResults2.push([1,Number(this.PerformHGD(1, this.engine_count, 6, this.actualdecklist.length))]);
+    this.engineResults2.push([2,Number(this.PerformHGD(2, this.engine_count, 6, this.actualdecklist.length))]);
+    this.engineResults2.push([3,Number(this.PerformHGD(3, this.engine_count, 6, this.actualdecklist.length))]);
+    this.engineResults2.push([4,Number(this.PerformHGD(4, this.engine_count, 6, this.actualdecklist.length))]);
+    this.engineResults2.push([5,Number(this.PerformHGD(5, this.engine_count, 6, this.actualdecklist.length))]);
+    this.engineResults2.push([6,Number(this.PerformHGD(6, this.engine_count, 6, this.actualdecklist.length))]);
   }
 }
 

@@ -143,6 +143,60 @@
       </tr>
     </table>
   </label>
+
+  <br />
+
+  <label>
+    Board Breakers Going First:
+    <table>
+      <tr>
+        <th>Exact # of Board Breakers in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of boardbreakerResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Board Breakers Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Board Breakers in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of boardbreakerResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+
+  <br />
+
+  <label>
+    Engine Going First:
+    <table>
+      <tr>
+        <th>Exact # of Engine in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of engineResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    Engine Going Second:
+    <table>
+      <tr>
+        <th>Exact # of Engine in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of engineResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
 </label>
 
 <router-outlet />
