@@ -39,8 +39,10 @@
   Results:
   <br />
   <label>
-    Starters Going First:
     <table>
+      <tr>
+        <th>Starters Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Starters in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -51,8 +53,10 @@
     </table>
   </label>
   <label>
-    Starters Going Second:
     <table>
+      <tr>
+        <th>Starters Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Starters in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -63,11 +67,11 @@
     </table>
   </label>
 
-  <br />
-
   <label>
-    Extenders Going First:
     <table>
+      <tr>
+        <th>Extenders Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Extenders in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -78,8 +82,10 @@
     </table>
   </label>
   <label>
-    Extenders Going Second:
     <table>
+      <tr>
+        <th>Extenders Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Extenders in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -91,10 +97,13 @@
   </label>
 
   <br />
+  <br />
 
   <label>
-    Handtraps Going First:
     <table>
+      <tr>
+        <th>Handtraps Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Handtraps in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -105,8 +114,10 @@
     </table>
   </label>
   <label>
-    Handtraps Going Second:
     <table>
+      <tr>
+        <th>Handtraps Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Handtraps in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -117,11 +128,11 @@
     </table>
   </label>
 
-  <br />
-
   <label>
-    Engine Requirements Going First:
     <table>
+      <tr>
+        <th>Engine Requirements Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Engine Requirements in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -132,8 +143,10 @@
     </table>
   </label>
   <label>
-    Engine Requirements Going Second:
     <table>
+      <tr>
+        <th>Engine Requirements Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Engine Requirements in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -145,10 +158,13 @@
   </label>
 
   <br />
+  <br />
 
   <label>
-    Board Breakers Going First:
     <table>
+      <tr>
+        <th>Board Breakers Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Board Breakers in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -159,8 +175,10 @@
     </table>
   </label>
   <label>
-    Board Breakers Going Second:
     <table>
+      <tr>
+        <th>Board Breakers Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Board Breakers in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -171,11 +189,11 @@
     </table>
   </label>
 
-  <br />
-
   <label>
-    Engine Going First:
     <table>
+      <tr>
+        <th>Engine Going First:</th>
+      </tr>
       <tr>
         <th>Exact # of Engine in Opening</th>
         <th>%Chance of Occurrence</th>
@@ -186,13 +204,47 @@
     </table>
   </label>
   <label>
-    Engine Going Second:
     <table>
+      <tr>
+        <th>Engine Going Second:</th>
+      </tr>
       <tr>
         <th>Exact # of Engine in Opening</th>
         <th>%Chance of Occurrence</th>
       </tr>
       <tr *ngFor="let results of engineResults2">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+
+  <br />
+  <br />
+
+  <label>
+    <table>
+      <tr>
+        <th>Non-Engine Going First:</th>
+      </tr>
+      <tr>
+        <th>Exact # of Non-Engine in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of nonengineResults">
+        <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+    </table>
+  </label>
+  <label>
+    <table>
+      <tr>
+        <th>Non-Engine Going Second:</th>
+      </tr>
+      <tr>
+        <th>Exact # of Non-Engine in Opening</th>
+        <th>%Chance of Occurrence</th>
+      </tr>
+      <tr *ngFor="let results of nonengineResults2">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
     </table>
