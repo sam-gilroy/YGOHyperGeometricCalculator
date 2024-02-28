@@ -39,7 +39,20 @@ export class AppComponent implements OnInit{
   engineResults2: number[][];
   nonengineResults: number[][];
   nonengineResults2: number[][];
-
+  at_least_one_starter: number;
+  at_least_one_extender: number;
+  at_least_one_handtrap: number;
+  at_least_one_enginereq: number;
+  at_least_one_boardbreaker: number;
+  at_least_one_engine: number;
+  at_least_one_nonengine: number;
+  at_least_one_starter2: number;
+  at_least_one_extender2: number;
+  at_least_one_handtrap2: number;
+  at_least_one_enginereq2: number;
+  at_least_one_boardbreaker2: number;
+  at_least_one_engine2: number;
+  at_least_one_nonengine2: number;
 
   constructor(
     private formBuilder: FormBuilder
@@ -69,6 +82,20 @@ export class AppComponent implements OnInit{
     this.engineResults2 = [];
     this.nonengineResults = [];
     this.nonengineResults2 = [];
+    this.at_least_one_starter = 0;
+    this.at_least_one_extender = 0;
+    this.at_least_one_handtrap = 0;
+    this.at_least_one_enginereq = 0;
+    this.at_least_one_boardbreaker = 0;
+    this.at_least_one_engine = 0;
+    this.at_least_one_nonengine = 0;
+    this.at_least_one_starter2 = 0;
+    this.at_least_one_extender2 = 0;
+    this.at_least_one_handtrap2 = 0;
+    this.at_least_one_enginereq2 = 0;
+    this.at_least_one_boardbreaker2 = 0;
+    this.at_least_one_engine2 = 0;
+    this.at_least_one_nonengine2 = 0;
 
 
     const decklist = [];
@@ -194,21 +221,48 @@ export class AppComponent implements OnInit{
     this.engineResults2 = [];
     this.nonengineResults = [];
     this.nonengineResults2 = [];
+    this.at_least_one_starter = 0;
+    this.at_least_one_extender = 0;
+    this.at_least_one_handtrap = 0;
+    this.at_least_one_enginereq = 0;
+    this.at_least_one_boardbreaker = 0;
+    this.at_least_one_engine = 0;
+    this.at_least_one_nonengine = 0;
+    this.at_least_one_starter2 = 0;
+    this.at_least_one_extender2 = 0;
+    this.at_least_one_handtrap2 = 0;
+    this.at_least_one_enginereq2 = 0;
+    this.at_least_one_boardbreaker2 = 0;
+    this.at_least_one_engine2 = 0;
+    this.at_least_one_nonengine2 = 0;
   }
 
   AnalyzeStarters(){
-    this.starterResults.push([1,Number(this.PerformHGD(1, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([2,Number(this.PerformHGD(2, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([3,Number(this.PerformHGD(3, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([4,Number(this.PerformHGD(4, this.starter_count, 5, this.actualdecklist.length))]);
-    this.starterResults.push([5,Number(this.PerformHGD(5, this.starter_count, 5, this.actualdecklist.length))]);
+    let s1 = Number(this.PerformHGD(1, this.starter_count, 5, this.actualdecklist.length));
+    let s2 = Number(this.PerformHGD(2, this.starter_count, 5, this.actualdecklist.length));
+    let s3 = Number(this.PerformHGD(3, this.starter_count, 5, this.actualdecklist.length));
+    let s4 = Number(this.PerformHGD(4, this.starter_count, 5, this.actualdecklist.length));
+    let s5 = Number(this.PerformHGD(5, this.starter_count, 5, this.actualdecklist.length));
+    this.at_least_one_starter = Number((s1+s2+s3+s4+s5).toFixed(2));
+    this.starterResults.push([1,s1]);
+    this.starterResults.push([2,s2]);
+    this.starterResults.push([3,s3]);
+    this.starterResults.push([4,s4]);
+    this.starterResults.push([5,s5]);
 
-    this.starterResults2.push([1,Number(this.PerformHGD(1, this.starter_count, 6, this.actualdecklist.length))]);
-    this.starterResults2.push([2,Number(this.PerformHGD(2, this.starter_count, 6, this.actualdecklist.length))]);
-    this.starterResults2.push([3,Number(this.PerformHGD(3, this.starter_count, 6, this.actualdecklist.length))]);
-    this.starterResults2.push([4,Number(this.PerformHGD(4, this.starter_count, 6, this.actualdecklist.length))]);
-    this.starterResults2.push([5,Number(this.PerformHGD(5, this.starter_count, 6, this.actualdecklist.length))]);
-    this.starterResults2.push([6,Number(this.PerformHGD(6, this.starter_count, 6, this.actualdecklist.length))]);
+    let s2_1 = Number(this.PerformHGD(1, this.starter_count, 6, this.actualdecklist.length));
+    let s2_2 = Number(this.PerformHGD(2, this.starter_count, 6, this.actualdecklist.length));
+    let s2_3 = Number(this.PerformHGD(3, this.starter_count, 6, this.actualdecklist.length));
+    let s2_4 = Number(this.PerformHGD(4, this.starter_count, 6, this.actualdecklist.length));
+    let s2_5 = Number(this.PerformHGD(5, this.starter_count, 6, this.actualdecklist.length));
+    let s2_6 = Number(this.PerformHGD(6, this.starter_count, 6, this.actualdecklist.length));
+    this.at_least_one_starter2 = Number((s2_1+s2_2+s2_3+s2_4+s2_5+s2_6).toFixed(2));
+    this.starterResults2.push([1,s2_1]);
+    this.starterResults2.push([2,s2_2]);
+    this.starterResults2.push([3,s2_3]);
+    this.starterResults2.push([4,s2_4]);
+    this.starterResults2.push([5,s2_5]);
+    this.starterResults2.push([6,s2_6]);
   }
   AnalyzeExtenders(){
     this.extenderResults.push([1,Number(this.PerformHGD(1, this.extender_count, 5, this.actualdecklist.length))]);
