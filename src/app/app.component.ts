@@ -265,32 +265,58 @@ export class AppComponent implements OnInit{
     this.starterResults2.push([6,s2_6]);
   }
   AnalyzeExtenders(){
-    this.extenderResults.push([1,Number(this.PerformHGD(1, this.extender_count, 5, this.actualdecklist.length))]);
-    this.extenderResults.push([2,Number(this.PerformHGD(2, this.extender_count, 5, this.actualdecklist.length))]);
-    this.extenderResults.push([3,Number(this.PerformHGD(3, this.extender_count, 5, this.actualdecklist.length))]);
-    this.extenderResults.push([4,Number(this.PerformHGD(4, this.extender_count, 5, this.actualdecklist.length))]);
-    this.extenderResults.push([5,Number(this.PerformHGD(5, this.extender_count, 5, this.actualdecklist.length))]);
+    let e1 = Number(this.PerformHGD(1, this.extender_count, 5, this.actualdecklist.length));
+    let e2 = Number(this.PerformHGD(2, this.extender_count, 5, this.actualdecklist.length));
+    let e3 = Number(this.PerformHGD(3, this.extender_count, 5, this.actualdecklist.length));
+    let e4 = Number(this.PerformHGD(4, this.extender_count, 5, this.actualdecklist.length));
+    let e5 = Number(this.PerformHGD(5, this.extender_count, 5, this.actualdecklist.length));
+    this.at_least_one_extender = Number((e1+e2+e3+e4+e5).toFixed(2));
+    this.extenderResults.push([1,e1]);
+    this.extenderResults.push([2,e2]);
+    this.extenderResults.push([3,e3]);
+    this.extenderResults.push([4,e4]);
+    this.extenderResults.push([5,e5]);
 
-    this.extenderResults2.push([1,Number(this.PerformHGD(1, this.extender_count, 6, this.actualdecklist.length))]);
-    this.extenderResults2.push([2,Number(this.PerformHGD(2, this.extender_count, 6, this.actualdecklist.length))]);
-    this.extenderResults2.push([3,Number(this.PerformHGD(3, this.extender_count, 6, this.actualdecklist.length))]);
-    this.extenderResults2.push([4,Number(this.PerformHGD(4, this.extender_count, 6, this.actualdecklist.length))]);
-    this.extenderResults2.push([5,Number(this.PerformHGD(5, this.extender_count, 6, this.actualdecklist.length))]);
-    this.extenderResults2.push([6,Number(this.PerformHGD(6, this.extender_count, 6, this.actualdecklist.length))]);
+    let e2_1 = Number(this.PerformHGD(1, this.extender_count, 6, this.actualdecklist.length));
+    let e2_2 = Number(this.PerformHGD(2, this.extender_count, 6, this.actualdecklist.length));
+    let e2_3 = Number(this.PerformHGD(3, this.extender_count, 6, this.actualdecklist.length));
+    let e2_4 = Number(this.PerformHGD(4, this.extender_count, 6, this.actualdecklist.length));
+    let e2_5 = Number(this.PerformHGD(5, this.extender_count, 6, this.actualdecklist.length));
+    let e2_6 = Number(this.PerformHGD(6, this.extender_count, 6, this.actualdecklist.length));
+    this.at_least_one_extender2 = Number((e2_1+e2_2+e2_3+e2_4+e2_5+e2_6).toFixed(2));
+    this.extenderResults2.push([1,e2_1]);
+    this.extenderResults2.push([2,e2_2]);
+    this.extenderResults2.push([3,e2_3]);
+    this.extenderResults2.push([4,e2_4]);
+    this.extenderResults2.push([5,e2_5]);
+    this.extenderResults2.push([6,e2_6]);
   }
   AnalyzeHandtraps(){
-    this.handtrapResults.push([1,Number(this.PerformHGD(1, this.handtrap_count, 5, this.actualdecklist.length))]);
-    this.handtrapResults.push([2,Number(this.PerformHGD(2, this.handtrap_count, 5, this.actualdecklist.length))]);
-    this.handtrapResults.push([3,Number(this.PerformHGD(3, this.handtrap_count, 5, this.actualdecklist.length))]);
-    this.handtrapResults.push([4,Number(this.PerformHGD(4, this.handtrap_count, 5, this.actualdecklist.length))]);
-    this.handtrapResults.push([5,Number(this.PerformHGD(5, this.handtrap_count, 5, this.actualdecklist.length))]);
+    let h1= Number(this.PerformHGD(1, this.handtrap_count, 5, this.actualdecklist.length));
+    let h2= Number(this.PerformHGD(2, this.handtrap_count, 5, this.actualdecklist.length));
+    let h3= Number(this.PerformHGD(3, this.handtrap_count, 5, this.actualdecklist.length));
+    let h4= Number(this.PerformHGD(4, this.handtrap_count, 5, this.actualdecklist.length));
+    let h5= Number(this.PerformHGD(5, this.handtrap_count, 5, this.actualdecklist.length));
+    this.at_least_one_handtrap = Number((h1+h2+h3+h4+h5).toFixed(2));
+    this.handtrapResults.push([1,h1]);
+    this.handtrapResults.push([2,h2]);
+    this.handtrapResults.push([3,h3]);
+    this.handtrapResults.push([4,h4]);
+    this.handtrapResults.push([5,h5]);
 
-    this.handtrapResults2.push([1,Number(this.PerformHGD(1, this.handtrap_count, 6, this.actualdecklist.length))]);
-    this.handtrapResults2.push([2,Number(this.PerformHGD(2, this.handtrap_count, 6, this.actualdecklist.length))]);
-    this.handtrapResults2.push([3,Number(this.PerformHGD(3, this.handtrap_count, 6, this.actualdecklist.length))]);
-    this.handtrapResults2.push([4,Number(this.PerformHGD(4, this.handtrap_count, 6, this.actualdecklist.length))]);
-    this.handtrapResults2.push([5,Number(this.PerformHGD(5, this.handtrap_count, 6, this.actualdecklist.length))]);
-    this.handtrapResults2.push([6,Number(this.PerformHGD(6, this.handtrap_count, 6, this.actualdecklist.length))]);
+    let h2_1 = Number(this.PerformHGD(1, this.handtrap_count, 6, this.actualdecklist.length));
+    let h2_2 = Number(this.PerformHGD(2, this.handtrap_count, 6, this.actualdecklist.length));
+    let h2_3 = Number(this.PerformHGD(3, this.handtrap_count, 6, this.actualdecklist.length));
+    let h2_4 = Number(this.PerformHGD(4, this.handtrap_count, 6, this.actualdecklist.length));
+    let h2_5 = Number(this.PerformHGD(5, this.handtrap_count, 6, this.actualdecklist.length));
+    let h2_6 = Number(this.PerformHGD(6, this.handtrap_count, 6, this.actualdecklist.length));
+    this.at_least_one_handtrap2 = Number((h2_1+h2_2+h2_3+h2_4+h2_5+h2_6).toFixed(2));
+    this.handtrapResults2.push([1,h2_1]);
+    this.handtrapResults2.push([2,h2_2]);
+    this.handtrapResults2.push([3,h2_3]);
+    this.handtrapResults2.push([4,h2_4]);
+    this.handtrapResults2.push([5,h2_5]);
+    this.handtrapResults2.push([6,h2_6]);
   }
   AnalyzeEngineReq(){
     this.enginereqResults.push([1,Number(this.PerformHGD(1, this.engine_req_count, 5, this.actualdecklist.length))]);
