@@ -1,4 +1,42 @@
-<form [formGroup]="fg" (submit)="onSubmit($event)">
+<button id = "ShowG" (click)="showGloss($event.target)">Glossary of Terms</button>
+<div id="glossary">
+  <table>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td>Starter</td>
+      <td>A card which starts your decks main combo line</td>
+    </tr>
+    <tr>
+      <td>Extender</td>
+      <td>A card which helps your deck continue playing after its combo is already started (a card CAN be both a starter and an extender)</td>
+    </tr>
+    <tr>
+      <td>Handtrap</td>
+      <td>A card which is used from the hand to disrupt an opponents plays</td>
+    </tr>
+    <tr>
+      <td>Engine Requirement</td>
+      <td>AKA "Brick" or "Garnet" this is a card which serves no direct purpose, but is required in order to make use of another card in the deck</td>
+    </tr>
+    <tr>
+      <td>Board Breaker</td>
+      <td>A card which is meant to break up an opponents end board, usually when you are going second</td>
+    </tr>
+    <tr>
+      <td>Engine</td>
+      <td>Any card which helps further your own game plan, also any in-archetype searchable disruptions</td>
+    </tr>
+    <tr>
+      <td>Non-Engine</td>
+      <td>Any card which hinders your opponents game plan</td>
+    </tr>
+  </table>
+</div>
+
+<form [formGroup]="fg">
   <div formArrayName="deck" class = "form-group" *ngFor="let card of deck.controls; let ind = index;">
 
     <div [formGroupName]="ind" class="entryRecord">
@@ -31,8 +69,8 @@
     </div>
   </div>
   <br />
-  <button id="newRow" (click) = "AddNewRow()">Add Another Card</button>
-  <input type="submit">
+  <button id="newRow" (click) = "AddNewRow($event.target)">Add Another Card</button>
+  <button id="submit" (click)="onSubmit($event.target)">Analyze Deck</button>
 </form>
 <br />
 <label>
@@ -87,6 +125,10 @@
       <tr *ngFor="let results of extenderResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Extender</td>
+        <td>{{at_least_one_extender}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -100,6 +142,10 @@
       </tr>
       <tr *ngFor="let results of extenderResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Extender</td>
+        <td>{{at_least_one_extender2}}</td>
       </tr>
     </table>
   </label>
@@ -119,6 +165,10 @@
       <tr *ngFor="let results of handtrapResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Handtrap</td>
+        <td>{{at_least_one_handtrap}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -132,6 +182,10 @@
       </tr>
       <tr *ngFor="let results of handtrapResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Handtrap</td>
+        <td>{{at_least_one_handtrap2}}</td>
       </tr>
     </table>
   </label>
@@ -148,6 +202,10 @@
       <tr *ngFor="let results of enginereqResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Engine Requirement</td>
+        <td>{{at_least_one_enginereq}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -161,6 +219,10 @@
       </tr>
       <tr *ngFor="let results of enginereqResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Engine Requirement</td>
+        <td>{{at_least_one_enginereq2}}</td>
       </tr>
     </table>
   </label>
@@ -180,6 +242,10 @@
       <tr *ngFor="let results of boardbreakerResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Board Breaker</td>
+        <td>{{at_least_one_boardbreaker}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -193,6 +259,10 @@
       </tr>
       <tr *ngFor="let results of boardbreakerResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Board Breaker</td>
+        <td>{{at_least_one_boardbreaker2}}</td>
       </tr>
     </table>
   </label>
@@ -209,6 +279,10 @@
       <tr *ngFor="let results of engineResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Engine</td>
+        <td>{{at_least_one_engine}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -222,6 +296,10 @@
       </tr>
       <tr *ngFor="let results of engineResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Engine</td>
+        <td>{{at_least_one_engine2}}</td>
       </tr>
     </table>
   </label>
@@ -241,6 +319,10 @@
       <tr *ngFor="let results of nonengineResults">
         <td *ngFor="let field of results">{{field}}</td>
       </tr>
+      <tr>
+        <td>At Least One Non-Engine</td>
+        <td>{{at_least_one_nonengine}}</td>
+      </tr>
     </table>
   </label>
   <label>
@@ -254,6 +336,10 @@
       </tr>
       <tr *ngFor="let results of nonengineResults2">
         <td *ngFor="let field of results">{{field}}</td>
+      </tr>
+      <tr>
+        <td>At Least One Non-Engine</td>
+        <td>{{at_least_one_nonengine2}}</td>
       </tr>
     </table>
   </label>

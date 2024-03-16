@@ -53,6 +53,7 @@ export class AppComponent implements OnInit{
   at_least_one_boardbreaker2: number;
   at_least_one_engine2: number;
   at_least_one_nonengine2: number;
+  gloss: HTMLElement | null;
 
   constructor(
     private formBuilder: FormBuilder
@@ -96,8 +97,7 @@ export class AppComponent implements OnInit{
     this.at_least_one_boardbreaker2 = 0;
     this.at_least_one_engine2 = 0;
     this.at_least_one_nonengine2 = 0;
-
-
+    this.gloss = document.getElementById('glossary');
     const decklist = [];
     decklist.push(this.formBuilder.group({
       cardname:'',
@@ -117,24 +117,34 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    this.gloss = document.getElementById('glossary');
+    // @ts-ignore
+    this.gloss.hidden = true;
   }
 
-  onSubmit(e: Event) {
-    this.clearResults();
-    this.prepForAnalysis();
-    this.AnalyzeStarters();
-    this.AnalyzeExtenders();
-    this.AnalyzeHandtraps();
-    this.AnalyzeEngineReq();
-    this.AnalyzeBoardBreakers();
-    this.AnalyzeEngine();
-    this.AnalyzeNonEngine();
+  onSubmit(e: EventTarget | null) {
+    // @ts-ignore
+    console.log(e.id);
+    // @ts-ignore
+    if(e.id == "submit") {
+      this.clearResults();
+      this.prepForAnalysis();
+      this.AnalyzeStarters();
+      this.AnalyzeExtenders();
+      this.AnalyzeHandtraps();
+      this.AnalyzeEngineReq();
+      this.AnalyzeBoardBreakers();
+      this.AnalyzeEngine();
+      this.AnalyzeNonEngine();
+    }
   }
 
-  AddNewRow() {
-    this.deck = this.fg.get('deck') as FormArray
-    this.deck.push(this.CreateNewRow());
+  AddNewRow(target: EventTarget | null) {
+    // @ts-ignore
+    if (target.id == "newRow") {
+      this.deck = this.fg.get('deck') as FormArray
+      this.deck.push(this.CreateNewRow());
+    }
   }
   CreateNewRow(){
     return this.formBuilder.group({
@@ -319,60 +329,128 @@ export class AppComponent implements OnInit{
     this.handtrapResults2.push([6,h2_6]);
   }
   AnalyzeEngineReq(){
-    this.enginereqResults.push([1,Number(this.PerformHGD(1, this.engine_req_count, 5, this.actualdecklist.length))]);
-    this.enginereqResults.push([2,Number(this.PerformHGD(2, this.engine_req_count, 5, this.actualdecklist.length))]);
-    this.enginereqResults.push([3,Number(this.PerformHGD(3, this.engine_req_count, 5, this.actualdecklist.length))]);
-    this.enginereqResults.push([4,Number(this.PerformHGD(4, this.engine_req_count, 5, this.actualdecklist.length))]);
-    this.enginereqResults.push([5,Number(this.PerformHGD(5, this.engine_req_count, 5, this.actualdecklist.length))]);
+    let er1 = Number(this.PerformHGD(1, this.engine_req_count, 5, this.actualdecklist.length));
+    let er2 = Number(this.PerformHGD(2, this.engine_req_count, 5, this.actualdecklist.length));
+    let er3 = Number(this.PerformHGD(3, this.engine_req_count, 5, this.actualdecklist.length));
+    let er4 = Number(this.PerformHGD(4, this.engine_req_count, 5, this.actualdecklist.length));
+    let er5 = Number(this.PerformHGD(5, this.engine_req_count, 5, this.actualdecklist.length));
+    this.at_least_one_enginereq = Number((er1+er2+er3+er4+er5).toFixed(2));
+    this.enginereqResults.push([1,er1]);
+    this.enginereqResults.push([2,er2]);
+    this.enginereqResults.push([3,er3]);
+    this.enginereqResults.push([4,er4]);
+    this.enginereqResults.push([5,er5]);
 
-    this.enginereqResults2.push([1,Number(this.PerformHGD(1, this.engine_req_count, 6, this.actualdecklist.length))]);
-    this.enginereqResults2.push([2,Number(this.PerformHGD(2, this.engine_req_count, 6, this.actualdecklist.length))]);
-    this.enginereqResults2.push([3,Number(this.PerformHGD(3, this.engine_req_count, 6, this.actualdecklist.length))]);
-    this.enginereqResults2.push([4,Number(this.PerformHGD(4, this.engine_req_count, 6, this.actualdecklist.length))]);
-    this.enginereqResults2.push([5,Number(this.PerformHGD(5, this.engine_req_count, 6, this.actualdecklist.length))]);
-    this.enginereqResults2.push([6,Number(this.PerformHGD(6, this.engine_req_count, 6, this.actualdecklist.length))]);
+    let er2_1 = Number(this.PerformHGD(1, this.engine_req_count, 6, this.actualdecklist.length));
+    let er2_2 = Number(this.PerformHGD(2, this.engine_req_count, 6, this.actualdecklist.length));
+    let er2_3 = Number(this.PerformHGD(3, this.engine_req_count, 6, this.actualdecklist.length));
+    let er2_4 = Number(this.PerformHGD(4, this.engine_req_count, 6, this.actualdecklist.length));
+    let er2_5 = Number(this.PerformHGD(5, this.engine_req_count, 6, this.actualdecklist.length));
+    let er2_6 = Number(this.PerformHGD(6, this.engine_req_count, 6, this.actualdecklist.length));
+    this.at_least_one_enginereq2 = Number((er2_1+er2_2+er2_3+er2_4+er2_5+er2_6).toFixed(2));
+    this.enginereqResults2.push([1,er2_1]);
+    this.enginereqResults2.push([2,er2_2]);
+    this.enginereqResults2.push([3,er2_3]);
+    this.enginereqResults2.push([4,er2_4]);
+    this.enginereqResults2.push([5,er2_5]);
+    this.enginereqResults2.push([6,er2_6]);
   }
   AnalyzeBoardBreakers(){
-    this.boardbreakerResults.push([1,Number(this.PerformHGD(1, this.board_breaker_count, 5, this.actualdecklist.length))]);
-    this.boardbreakerResults.push([2,Number(this.PerformHGD(2, this.board_breaker_count, 5, this.actualdecklist.length))]);
-    this.boardbreakerResults.push([3,Number(this.PerformHGD(3, this.board_breaker_count, 5, this.actualdecklist.length))]);
-    this.boardbreakerResults.push([4,Number(this.PerformHGD(4, this.board_breaker_count, 5, this.actualdecklist.length))]);
-    this.boardbreakerResults.push([5,Number(this.PerformHGD(5, this.board_breaker_count, 5, this.actualdecklist.length))]);
+    let bb1 = Number(this.PerformHGD(1, this.board_breaker_count, 5, this.actualdecklist.length));
+    let bb2 = Number(this.PerformHGD(2, this.board_breaker_count, 5, this.actualdecklist.length));
+    let bb3 = Number(this.PerformHGD(3, this.board_breaker_count, 5, this.actualdecklist.length));
+    let bb4 = Number(this.PerformHGD(4, this.board_breaker_count, 5, this.actualdecklist.length));
+    let bb5 = Number(this.PerformHGD(5, this.board_breaker_count, 5, this.actualdecklist.length));
+    this.at_least_one_boardbreaker = Number((bb1+bb2+bb3+bb4+bb5).toFixed(2));
+    this.boardbreakerResults.push([1,bb1]);
+    this.boardbreakerResults.push([2,bb2]);
+    this.boardbreakerResults.push([3,bb3]);
+    this.boardbreakerResults.push([4,bb4]);
+    this.boardbreakerResults.push([5,bb5]);
 
-    this.boardbreakerResults2.push([1,Number(this.PerformHGD(1, this.board_breaker_count, 6, this.actualdecklist.length))]);
-    this.boardbreakerResults2.push([2,Number(this.PerformHGD(2, this.board_breaker_count, 6, this.actualdecklist.length))]);
-    this.boardbreakerResults2.push([3,Number(this.PerformHGD(3, this.board_breaker_count, 6, this.actualdecklist.length))]);
-    this.boardbreakerResults2.push([4,Number(this.PerformHGD(4, this.board_breaker_count, 6, this.actualdecklist.length))]);
-    this.boardbreakerResults2.push([5,Number(this.PerformHGD(5, this.board_breaker_count, 6, this.actualdecklist.length))]);
-    this.boardbreakerResults2.push([6,Number(this.PerformHGD(6, this.board_breaker_count, 6, this.actualdecklist.length))]);
+    let bb2_1 = Number(this.PerformHGD(1, this.board_breaker_count, 6, this.actualdecklist.length));
+    let bb2_2 = Number(this.PerformHGD(2, this.board_breaker_count, 6, this.actualdecklist.length));
+    let bb2_3 = Number(this.PerformHGD(3, this.board_breaker_count, 6, this.actualdecklist.length));
+    let bb2_4 = Number(this.PerformHGD(4, this.board_breaker_count, 6, this.actualdecklist.length));
+    let bb2_5 = Number(this.PerformHGD(5, this.board_breaker_count, 6, this.actualdecklist.length));
+    let bb2_6 = Number(this.PerformHGD(6, this.board_breaker_count, 6, this.actualdecklist.length));
+    this.at_least_one_boardbreaker2 = Number((bb2_1+bb2_2+bb2_3+bb2_4+bb2_5+bb2_6).toFixed(2));
+    this.boardbreakerResults2.push([1,bb2_1]);
+    this.boardbreakerResults2.push([2,bb2_2]);
+    this.boardbreakerResults2.push([3,bb2_3]);
+    this.boardbreakerResults2.push([4,bb2_4]);
+    this.boardbreakerResults2.push([5,bb2_5]);
+    this.boardbreakerResults2.push([6,bb2_6]);
   }
   AnalyzeEngine(){
-    this.engineResults.push([1,Number(this.PerformHGD(1, this.engine_count, 5, this.actualdecklist.length))]);
-    this.engineResults.push([2,Number(this.PerformHGD(2, this.engine_count, 5, this.actualdecklist.length))]);
-    this.engineResults.push([3,Number(this.PerformHGD(3, this.engine_count, 5, this.actualdecklist.length))]);
-    this.engineResults.push([4,Number(this.PerformHGD(4, this.engine_count, 5, this.actualdecklist.length))]);
-    this.engineResults.push([5,Number(this.PerformHGD(5, this.engine_count, 5, this.actualdecklist.length))]);
+    let eng1 = Number(this.PerformHGD(1, this.engine_count, 5, this.actualdecklist.length));
+    let eng2 = Number(this.PerformHGD(2, this.engine_count, 5, this.actualdecklist.length));
+    let eng3 = Number(this.PerformHGD(3, this.engine_count, 5, this.actualdecklist.length));
+    let eng4 = Number(this.PerformHGD(4, this.engine_count, 5, this.actualdecklist.length));
+    let eng5 = Number(this.PerformHGD(5, this.engine_count, 5, this.actualdecklist.length));
+    this.at_least_one_engine = Number((eng1+eng2+eng3+eng4+eng5).toFixed(2));
+    this.engineResults.push([1,eng1]);
+    this.engineResults.push([2,eng2]);
+    this.engineResults.push([3,eng3]);
+    this.engineResults.push([4,eng4]);
+    this.engineResults.push([5,eng5]);
 
-    this.engineResults2.push([1,Number(this.PerformHGD(1, this.engine_count, 6, this.actualdecklist.length))]);
-    this.engineResults2.push([2,Number(this.PerformHGD(2, this.engine_count, 6, this.actualdecklist.length))]);
-    this.engineResults2.push([3,Number(this.PerformHGD(3, this.engine_count, 6, this.actualdecklist.length))]);
-    this.engineResults2.push([4,Number(this.PerformHGD(4, this.engine_count, 6, this.actualdecklist.length))]);
-    this.engineResults2.push([5,Number(this.PerformHGD(5, this.engine_count, 6, this.actualdecklist.length))]);
-    this.engineResults2.push([6,Number(this.PerformHGD(6, this.engine_count, 6, this.actualdecklist.length))]);
+    let eng2_1 = Number(this.PerformHGD(1, this.engine_count, 6, this.actualdecklist.length));
+    let eng2_2 = Number(this.PerformHGD(2, this.engine_count, 6, this.actualdecklist.length));
+    let eng2_3 = Number(this.PerformHGD(3, this.engine_count, 6, this.actualdecklist.length));
+    let eng2_4 = Number(this.PerformHGD(4, this.engine_count, 6, this.actualdecklist.length));
+    let eng2_5 = Number(this.PerformHGD(5, this.engine_count, 6, this.actualdecklist.length));
+    let eng2_6 = Number(this.PerformHGD(6, this.engine_count, 6, this.actualdecklist.length));
+    this.at_least_one_engine2 = Number((eng2_1+eng2_2+eng2_3+eng2_4+eng2_5+eng2_6).toFixed(2));
+    this.engineResults2.push([1,eng2_1]);
+    this.engineResults2.push([2,eng2_2]);
+    this.engineResults2.push([3,eng2_3]);
+    this.engineResults2.push([4,eng2_4]);
+    this.engineResults2.push([5,eng2_5]);
+    this.engineResults2.push([6,eng2_6]);
   }
   AnalyzeNonEngine(){
-    this.nonengineResults.push([1,Number(this.PerformHGD(1, this.nonengine_count, 5, this.actualdecklist.length))]);
-    this.nonengineResults.push([2,Number(this.PerformHGD(2, this.nonengine_count, 5, this.actualdecklist.length))]);
-    this.nonengineResults.push([3,Number(this.PerformHGD(3, this.nonengine_count, 5, this.actualdecklist.length))]);
-    this.nonengineResults.push([4,Number(this.PerformHGD(4, this.nonengine_count, 5, this.actualdecklist.length))]);
-    this.nonengineResults.push([5,Number(this.PerformHGD(5, this.nonengine_count, 5, this.actualdecklist.length))]);
+    let noneng1 = Number(this.PerformHGD(1, this.nonengine_count, 5, this.actualdecklist.length));
+    let noneng2 = Number(this.PerformHGD(2, this.nonengine_count, 5, this.actualdecklist.length));
+    let noneng3 = Number(this.PerformHGD(3, this.nonengine_count, 5, this.actualdecklist.length));
+    let noneng4 = Number(this.PerformHGD(4, this.nonengine_count, 5, this.actualdecklist.length));
+    let noneng5 = Number(this.PerformHGD(5, this.nonengine_count, 5, this.actualdecklist.length));
+    this.at_least_one_nonengine = Number((noneng1+noneng2+noneng3+noneng4+noneng5).toFixed(2));
+    this.nonengineResults.push([1,noneng1]);
+    this.nonengineResults.push([2,noneng2]);
+    this.nonengineResults.push([3,noneng3]);
+    this.nonengineResults.push([4,noneng4]);
+    this.nonengineResults.push([5,noneng5]);
 
-    this.nonengineResults2.push([1,Number(this.PerformHGD(1, this.nonengine_count, 6, this.actualdecklist.length))]);
-    this.nonengineResults2.push([2,Number(this.PerformHGD(2, this.nonengine_count, 6, this.actualdecklist.length))]);
-    this.nonengineResults2.push([3,Number(this.PerformHGD(3, this.nonengine_count, 6, this.actualdecklist.length))]);
-    this.nonengineResults2.push([4,Number(this.PerformHGD(4, this.nonengine_count, 6, this.actualdecklist.length))]);
-    this.nonengineResults2.push([5,Number(this.PerformHGD(5, this.nonengine_count, 6, this.actualdecklist.length))]);
-    this.nonengineResults2.push([6,Number(this.PerformHGD(6, this.nonengine_count, 6, this.actualdecklist.length))]);
+    let noneng2_1 = Number(this.PerformHGD(1, this.nonengine_count, 6, this.actualdecklist.length));
+    let noneng2_2 = Number(this.PerformHGD(2, this.nonengine_count, 6, this.actualdecklist.length));
+    let noneng2_3 = Number(this.PerformHGD(3, this.nonengine_count, 6, this.actualdecklist.length));
+    let noneng2_4 = Number(this.PerformHGD(4, this.nonengine_count, 6, this.actualdecklist.length));
+    let noneng2_5 = Number(this.PerformHGD(5, this.nonengine_count, 6, this.actualdecklist.length));
+    let noneng2_6 = Number(this.PerformHGD(6, this.nonengine_count, 6, this.actualdecklist.length));
+    this.at_least_one_nonengine2 = Number((noneng2_1+noneng2_2+noneng2_3+noneng2_4+noneng2_5+noneng2_6).toFixed(2));
+    this.nonengineResults2.push([1,noneng2_1]);
+    this.nonengineResults2.push([2,noneng2_2]);
+    this.nonengineResults2.push([3,noneng2_3]);
+    this.nonengineResults2.push([4,noneng2_4]);
+    this.nonengineResults2.push([5,noneng2_5]);
+    this.nonengineResults2.push([6,noneng2_6]);
+  }
+
+  showGloss(target: EventTarget | null) {
+    // @ts-ignore
+    if (target.id == "ShowG") {
+      // @ts-ignore
+      if (this.gloss.checkVisibility()) {
+        // @ts-ignore
+        this.gloss.hidden = true;
+      } else {
+        // @ts-ignore
+        this.gloss.hidden = false;
+      }
+    }
   }
 }
+
+
 
